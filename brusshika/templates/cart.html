@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel = 'stylesheet' type="text/css" href = '{% static "style.css" %}'>
+    <title>КАРЗИНА ПОКУПОК МАГАЗИН "БРУСНИКА"</title>
+    <style>
+        /* Add CSS styles for flex container and items */
+        .product-list {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
+            justify-content: space-between; /* Space items evenly along the main axis */
+            list-style: none; /* Remove list styles */
+            padding: 0;
+        }
+
+        .product-item {
+
+            flex: 1; /* Grow to fill available space evenly */
+             /* Limit item width to avoid overcrowding */
+            margin: 10px; /* Add spacing between items */
+            border: 1px solid #ccc; /* Add a border for visual separation */
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Style the "Buy Now" button */
+        .buy-now-button {
+            display: block;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1> КАРЗИНА </h1>
+
+    <div class="product-list">
+
+
+
+    {% for item in cart_items %}
+    <div class="product-item">
+        <h1>Вы купили товар</h1>
+        <h2>{{ item.product.name }} ({{ item.quantity }})</h2>
+        <h2>Цена: {{ item.product.price }} руб. </h2>
+        <a href="{% url 'cart:remove_from_cart' item.id %}">Удалить из карзины товар</a>
+    </div>
+    {% empty %}
+    <p>ВАША КАРЗИНА ПУСТА</p>
+    {% endfor %}
+
+    </div>
+
+    <h2>СУММА К ОПЛАТЕ: {{ total_price }} руб.</h2>
+     <button>
+         <a href="{% url 'cart:product_list' %}"> В КАТАЛОГ * ПРОДОЛЖИТЬ ПОКУПКИ</a>
+    </button>
+
+    <button>
+        <a href="http://127.0.0.1:8000/pokupka/">ОПЛАТИТЬ ТОВАРЫ</a>
+    </button>
+    <button>
+        <a href="http://127.0.0.1:8000/menu/">ВЕРНУТСЯ НА ГЛАВНУЮ СТРАНИЦУ</a>
+    </button>
+
+
+</body>
+
+</html>

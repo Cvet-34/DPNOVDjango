@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} МАГАЗИН ТОВАРОВ ДЛЯ ЗДОРОВЬЯ "БРУСНИКА"{% endblock %}</title>
+    <link rel = 'stylesheet' type="text/css" href = '{% static "style.css" %}'>
+</head>
+<adm>
+     <button>
+         <a href="http://127.0.0.1:8000/admin/">ВХОД ДЛЯ АДМИНИСТРАТОРОВ</a>
+     </button>
+</adm>
+<body>
+    <img src="{% static '/IMG_20240521_094111.jpg' %}" alt="My image" height="260px" width="1455px"/>
+    <pivetctvie>
+        {% block pivetctvie %}
+            <h1>ВАС ПРИВЕТСТВУЕТ МАГАЗИН "БРУСНИКА"! </h1>
+            <h2>Природные товары для вас.</h2>
+            <h2>Польза и красота от природы.</h2>
+            <h2>Подбираем только качественные товары для вашего здоровья.</h2>
+        {% endblock %}
+    </pivetctvie>
+    <nav>
+    <ul>
+        <menu>
+            {% block menu %}
+            <h1>МАГАЗИН</h1>
+            <button>
+                <a href="http://127.0.0.1:8000/product_list/">ПЕРЕЙТИ В КАТАЛОГ ТОВАРОВ</a>
+            </button>
+
+            <h1>МАСЛА</h1>
+            <h1>СМОЛКА ЖИВАТЕЛЬНА</h1>
+            <h1>ЧАИ</h1>
+            <h1>БАЛЬЗАМЫ</h1>
+            <h1>ВОДА ПРОПОЛИСНАЯ</h1>
+            <a href='http://127.0.0.1:8000/cart/'>КАРЗИНА</a>
+            {% endblock %}
+        </menu>
+    </ul>
+    </nav>
+    <content>
+        {% block content %}
+            <p>НАШИ ПРИЕМУЩЕСТВА</p>
+            <li> БЫСТРОЕ ОФОРМЛЕНИЕ</li>
+            <li> ВЫСОКОЕ КАЧЕСТВО ПРОДУКЦИ</li>
+            <li> БЫСТРАЯ ДОСТАВКА </li>
+        {% endblock %}
+    </content>
+
+    <section>
+        {% block section %}
+        <p>Контакты: 620000, г.Новосибирск, ул. Ленина, д.50.</p>
+        <p>т.8-800-00000009, brusnica@mail.ru</p>
+        {% endblock %}
+    </section>
+
+
+    <info>
+        {% block info %}
+        {% include 'info.html' %}
+        {% endblock %}
+    </info>
+</body>
+</html>
